@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comercios",
+  "info": {
+    "singularName": "comercio",
+    "pluralName": "comercios",
+    "displayName": "Comercio"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "required": true
+    },
+    "Foto": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Tamano": {
+      "type": "enumeration",
+      "enum": [
+        "Pequena",
+        "Mediana",
+        "Grande"
+      ]
+    },
+    "Segmento": {
+      "type": "dynamiczone",
+      "components": [
+        "herramientas.establecimientos"
+      ]
+    },
+    "Poblacion": {
+      "type": "dynamiczone",
+      "components": [
+        "herramientas.genero"
+      ]
+    },
+    "Ubicaciones": {
+      "type": "dynamiczone",
+      "components": [
+        "herramientas.direcciones"
+      ]
+    },
+    "Social": {
+      "type": "dynamiczone",
+      "components": [
+        "herramientas.redes"
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_herramientas_redes",
+  "info": {
+    "displayName": "Redes",
+    "icon": "heart"
+  },
+  "options": {},
+  "attributes": {
+    "Red": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Instagram",
+      "enum": [
+        "Instagram",
+        "Facebook",
+        "X",
+        "Telegram",
+        "Youtube",
+        "TikTok",
+        "Web"
+      ]
+    },
+    "Usuario": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

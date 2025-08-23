@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_herramientas_generos",
+  "info": {
+    "displayName": "Generos",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "Tipo": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Gay",
+      "enum": [
+        "Gay",
+        "Hetero",
+        "Lesbian",
+        "Trans"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_herramientas_direcciones",
+  "info": {
+    "displayName": "Direcciones",
+    "icon": "earth"
+  },
+  "options": {},
+  "attributes": {
+    "Tipo": {
+      "type": "enumeration",
+      "enum": [
+        "Principal",
+        "Sedes",
+        "Franquicias"
+      ]
+    },
+    "Celular": {
+      "type": "biginteger"
+    },
+    "divipola": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::divipola.divipola"
+    },
+    "Latitud": {
+      "type": "string"
+    },
+    "Longitud": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

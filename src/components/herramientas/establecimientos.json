@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_herramientas_establecimientos",
+  "info": {
+    "displayName": "Establecimientos",
+    "icon": "shoppingCart"
+  },
+  "options": {},
+  "attributes": {
+    "Tipo": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Bar",
+      "enum": [
+        "Antro",
+        "Bar",
+        "Discoteca",
+        "Gimnasio",
+        "Hoteles",
+        "Moteles",
+        "Residencias",
+        "SexShop",
+        "Spa",
+        "Video"
+      ]
+    }
+  },
+  "config": {}
+}

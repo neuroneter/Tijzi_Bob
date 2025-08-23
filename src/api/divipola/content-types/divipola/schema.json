@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "divipolas",
+  "info": {
+    "singularName": "divipola",
+    "pluralName": "divipolas",
+    "displayName": "Divipola"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Pais": {
+      "type": "string",
+      "required": true
+    },
+    "Estado": {
+      "type": "string",
+      "required": true
+    },
+    "Ciudad": {
+      "type": "string",
+      "required": true
+    },
+    "Codigo": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,75 +1,82 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SharedSlider extends Struct.ComponentSchema {
-  collectionName: 'components_shared_sliders';
+export interface HerramientasDirecciones extends Struct.ComponentSchema {
+  collectionName: 'components_herramientas_direcciones';
   info: {
-    displayName: 'Slider';
-    icon: 'address-book';
-    description: '';
+    displayName: 'Direcciones';
+    icon: 'earth';
   };
   attributes: {
-    files: Schema.Attribute.Media<'images', true>;
+    Celular: Schema.Attribute.BigInteger;
+    divipola: Schema.Attribute.Relation<'oneToOne', 'api::divipola.divipola'>;
+    Latitud: Schema.Attribute.String;
+    Longitud: Schema.Attribute.String;
+    Tipo: Schema.Attribute.Enumeration<['Principal', 'Sedes', 'Franquicias']>;
   };
 }
 
-export interface SharedSeo extends Struct.ComponentSchema {
-  collectionName: 'components_shared_seos';
+export interface HerramientasEstablecimientos extends Struct.ComponentSchema {
+  collectionName: 'components_herramientas_establecimientos';
   info: {
-    name: 'Seo';
-    icon: 'allergies';
-    displayName: 'Seo';
-    description: '';
+    displayName: 'Establecimientos';
+    icon: 'shoppingCart';
   };
   attributes: {
-    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
+    Tipo: Schema.Attribute.Enumeration<
+      [
+        'Antro',
+        'Bar',
+        'Discoteca',
+        'Gimnasio',
+        'Hoteles',
+        'Moteles',
+        'Residencias',
+        'SexShop',
+        'Spa',
+        'Video',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Bar'>;
   };
 }
 
-export interface SharedRichText extends Struct.ComponentSchema {
-  collectionName: 'components_shared_rich_texts';
+export interface HerramientasGenero extends Struct.ComponentSchema {
+  collectionName: 'components_herramientas_generos';
   info: {
-    displayName: 'Rich text';
-    icon: 'align-justify';
-    description: '';
+    displayName: 'Generos';
+    icon: 'alien';
   };
   attributes: {
-    body: Schema.Attribute.RichText;
+    Tipo: Schema.Attribute.Enumeration<['Gay', 'Hetero', 'Lesbian', 'Trans']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Gay'>;
   };
 }
 
-export interface SharedQuote extends Struct.ComponentSchema {
-  collectionName: 'components_shared_quotes';
+export interface HerramientasRedes extends Struct.ComponentSchema {
+  collectionName: 'components_herramientas_redes';
   info: {
-    displayName: 'Quote';
-    icon: 'indent';
+    displayName: 'Redes';
+    icon: 'heart';
   };
   attributes: {
-    title: Schema.Attribute.String;
-    body: Schema.Attribute.Text;
-  };
-}
-
-export interface SharedMedia extends Struct.ComponentSchema {
-  collectionName: 'components_shared_media';
-  info: {
-    displayName: 'Media';
-    icon: 'file-video';
-  };
-  attributes: {
-    file: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    Red: Schema.Attribute.Enumeration<
+      ['Instagram', 'Facebook', 'X', 'Telegram', 'Youtube', 'TikTok', 'Web']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Instagram'>;
+    Usuario: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'shared.slider': SharedSlider;
-      'shared.seo': SharedSeo;
-      'shared.rich-text': SharedRichText;
-      'shared.quote': SharedQuote;
-      'shared.media': SharedMedia;
+      'herramientas.direcciones': HerramientasDirecciones;
+      'herramientas.establecimientos': HerramientasEstablecimientos;
+      'herramientas.genero': HerramientasGenero;
+      'herramientas.redes': HerramientasRedes;
     }
   }
 }
