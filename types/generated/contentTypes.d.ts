@@ -512,6 +512,8 @@ export interface ApiProspectoModelProspectoModel
     divipola: Schema.Attribute.Relation<'oneToOne', 'api::divipola.divipola'>;
     Facebook: Schema.Attribute.String & Schema.Attribute.Unique;
     FechaContacto: Schema.Attribute.DateTime;
+    Genero: Schema.Attribute.Enumeration<['Hombre', 'Mujer']> &
+      Schema.Attribute.Required;
     Instagram: Schema.Attribute.String & Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
