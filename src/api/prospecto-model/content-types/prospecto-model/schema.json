@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prospecto_models",
+  "info": {
+    "singularName": "prospecto-model",
+    "pluralName": "prospecto-models",
+    "displayName": "ProspectoModel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "default": "No registra"
+    },
+    "Telefono": {
+      "type": "biginteger",
+      "required": true,
+      "default": "0"
+    },
+    "Pagina": {
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    "divipola": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::divipola.divipola"
+    },
+    "categoria": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::categoria.categoria"
+    },
+    "Telegram": {
+      "type": "string",
+      "unique": true
+    },
+    "Facebook": {
+      "type": "string",
+      "unique": true
+    },
+    "X": {
+      "type": "string",
+      "unique": true
+    },
+    "Instagram": {
+      "type": "string",
+      "unique": true
+    },
+    "Contactado": {
+      "type": "boolean",
+      "default": false
+    },
+    "Anotaciones": {
+      "type": "richtext"
+    },
+    "Agenda": {
+      "type": "datetime"
+    },
+    "FechaContacto": {
+      "type": "datetime"
+    },
+    "Modelo": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

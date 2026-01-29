@@ -4,13 +4,18 @@
   "info": {
     "singularName": "divipola",
     "pluralName": "divipolas",
-    "displayName": "Divipola"
+    "displayName": "Divipola",
+    "targetAttribute": "Ciudad"
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
+    "Ciudad": {
+      "type": "string",
+      "required": true
+    },
     "Pais": {
       "type": "string",
       "required": true
@@ -19,11 +24,16 @@
       "type": "string",
       "required": true
     },
-    "Ciudad": {
+    "Codigo": {
       "type": "string",
       "required": true
     },
-    "Codigo": {
+    "Longitud": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "Latitud": {
       "type": "string",
       "required": true
     }

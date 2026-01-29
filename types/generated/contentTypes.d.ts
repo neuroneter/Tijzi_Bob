@@ -373,6 +373,52 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCategoriaCategoria extends Struct.CollectionTypeSchema {
+  collectionName: 'categorias';
+  info: {
+    displayName: 'Categoria';
+    pluralName: 'categorias';
+    singularName: 'categoria';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Icon: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::categoria.categoria'
+    >;
+    Nombre: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiComercioComercio extends Struct.CollectionTypeSchema {
   collectionName: 'comercios';
   info: {
@@ -413,6 +459,7 @@ export interface ApiDivipolaDivipola extends Struct.CollectionTypeSchema {
     displayName: 'Divipola';
     pluralName: 'divipolas';
     singularName: 'divipola';
+    targetAttribute: 'Ciudad';
   };
   options: {
     draftAndPublish: false;
@@ -424,17 +471,68 @@ export interface ApiDivipolaDivipola extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Estado: Schema.Attribute.String & Schema.Attribute.Required;
+    Latitud: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::divipola.divipola'
     > &
       Schema.Attribute.Private;
+    Longitud: Schema.Attribute.String & Schema.Attribute.Required;
     Pais: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProspectoModelProspectoModel
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'prospecto_models';
+  info: {
+    displayName: 'ProspectoModel';
+    pluralName: 'prospecto-models';
+    singularName: 'prospecto-model';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Agenda: Schema.Attribute.DateTime;
+    Anotaciones: Schema.Attribute.RichText;
+    categoria: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::categoria.categoria'
+    >;
+    Contactado: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    divipola: Schema.Attribute.Relation<'oneToOne', 'api::divipola.divipola'>;
+    Facebook: Schema.Attribute.String & Schema.Attribute.Unique;
+    FechaContacto: Schema.Attribute.DateTime;
+    Instagram: Schema.Attribute.String & Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::prospecto-model.prospecto-model'
+    > &
+      Schema.Attribute.Private;
+    Modelo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    Nombre: Schema.Attribute.String & Schema.Attribute.DefaultTo<'No registra'>;
+    Pagina: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    Telefono: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'0'>;
+    Telegram: Schema.Attribute.String & Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    X: Schema.Attribute.String & Schema.Attribute.Unique;
   };
 }
 
@@ -947,8 +1045,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::categoria.categoria': ApiCategoriaCategoria;
       'api::comercio.comercio': ApiComercioComercio;
       'api::divipola.divipola': ApiDivipolaDivipola;
+      'api::prospecto-model.prospecto-model': ApiProspectoModelProspectoModel;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
