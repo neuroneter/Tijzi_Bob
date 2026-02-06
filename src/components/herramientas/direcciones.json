@@ -17,11 +17,6 @@
     "Celular": {
       "type": "biginteger"
     },
-    "divipola": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::divipola.divipola"
-    },
     "Latitud": {
       "type": "string"
     },

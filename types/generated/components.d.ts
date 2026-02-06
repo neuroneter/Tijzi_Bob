@@ -8,7 +8,6 @@ export interface HerramientasDirecciones extends Struct.ComponentSchema {
   };
   attributes: {
     Celular: Schema.Attribute.BigInteger;
-    divipola: Schema.Attribute.Relation<'oneToOne', 'api::divipola.divipola'>;
     Latitud: Schema.Attribute.String;
     Longitud: Schema.Attribute.String;
     Tipo: Schema.Attribute.Enumeration<['Principal', 'Sedes', 'Franquicias']>;
